@@ -164,11 +164,29 @@ h3 {
   color: var(--forest);
 }
 
+.main-nav a {
+  position: relative;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--forest);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--ease-soft);
+}
+
 .main-nav a.active {
   color: var(--forest);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+}
+
+.main-nav a.active::after {
+  transform: scaleX(1);
 }
 
 /* Buttons */
