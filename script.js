@@ -16,6 +16,26 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
 
+const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+if (navLinks.length) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+
+  navLinks.forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    const section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
+}
+
 const navShell = document.querySelector('.nav-shell');
 const menuToggle = document.querySelector('.menu-toggle');
 

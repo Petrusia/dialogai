@@ -164,6 +164,11 @@ h3 {
   color: var(--forest);
 }
 
+.main-nav a.active {
+  color: var(--forest);
+  font-weight: 600;
+}
+
 /* Buttons */
 .nav-cta,
 .btn {
