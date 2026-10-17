@@ -6,15 +6,15 @@ export function ProcessSection() {
   return (
     <section id="kaip" className={`${sectionY} bg-white`}>
       <div className="container-site">
-        <div className="mx-auto mb-16 max-w-prose-hero text-center">
+        <div className="mb-12 max-w-prose-hero">
           <p className={kicker}>{process.kicker}</p>
           <h2 className="mt-4 text-h2">{process.title}</h2>
         </div>
-        <div className="grid gap-4">
+        <ol className="border-b border-line">
           {process.steps.map((step) => (
             <ProcessStep key={step.number} {...step} />
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

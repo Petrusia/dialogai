@@ -9,7 +9,7 @@ The React Doctor score on this branch is 100. That pass also escaped JSON-LD, ho
 | Plan | Status | Severity | Depends on | Summary |
 | --- | --- | --- | --- | --- |
 | [001](001-cache-only-successful-articles.md) | TODO | MEDIUM | none | Cache a successful articles response. Keep the local list outside the cache when the upstream fails. |
-| [002](002-raise-text-contrast.md) | TODO | MEDIUM | none | Move muted, clay, and Facebook colors to WCAG AA pairs. |
+| [002](002-raise-text-contrast.md) | DONE | MEDIUM | none | Move muted, clay, and Facebook colors to WCAG AA pairs. |
 | [003](003-guard-inquiry-resubmit.md) | DONE | MEDIUM | none | Block a second inquiry submit with a ref before the first await. |
 | [004](004-associate-inquiry-field-errors.md) | TODO | MEDIUM | 003 | Point each invalid inquiry control at its error with `aria-describedby`. |
 | [005](005-choose-one-active-section.md) | TODO | MEDIUM | none | Highlight the first intersecting header section, in nav order. |

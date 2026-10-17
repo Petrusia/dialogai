@@ -5,21 +5,16 @@ import { btnMint, kicker } from "@/lib/ui";
 
 export function NansenBlock() {
   return (
-    <div className="mt-16 grid gap-10 rounded-2xl bg-gradient-to-br from-ink via-forest to-ink-deep p-8 text-white shadow-soft sm2:p-14 lg2:grid-cols-[0.95fr_1.05fr]">
-      <div>
-        <div className="relative mb-6 size-[104px] overflow-hidden rounded-full border-[6px] border-mint/80 bg-white/10 shadow-[0_22px_48px_rgba(0,0,0,0.18)] sm2:size-[118px] lg2:size-[132px]">
-          <Image src={nansen.image} alt={nansen.alt} fill sizes="132px" className="object-cover transition-transform duration-450 ease-soft hover:scale-105" />
-        </div>
-        <p className={`${kicker} text-mint`}>{nansen.originKicker}</p>
-        <h3 className="mt-4 font-display text-[clamp(2.2rem,4vw,3.6rem)] font-extrabold text-white">{nansen.title}</h3>
-        <p className="mt-4 text-white/80">{nansen.origin}</p>
-        <a href={externalLinks.nansen} target="_blank" rel="noopener noreferrer" className={`${btnMint} mt-8`}>
-          {nansen.link}
-        </a>
+    <div className="mt-16 grid overflow-hidden rounded-2xl bg-gradient-to-br from-ink via-forest to-ink-deep text-white shadow-soft lg2:grid-cols-2">
+      <div className="relative min-h-72 lg2:min-h-full">
+        <Image src={nansen.image} alt={nansen.alt} fill sizes="(min-width: 1025px) 40vw, 100vw" className="object-cover" />
       </div>
-      <div>
-        <p className={`${kicker} text-mint`}>{nansen.experienceKicker}</p>
-        <h3 className="mt-4 font-display text-[clamp(1.9rem,3vw,3rem)] font-extrabold text-white">{nansen.headline}</h3>
+      <div className="flex flex-col justify-center p-8 sm2:p-12">
+        <p className={`${kicker} text-mint`}>{nansen.originKicker}</p>
+        <h3 className="mt-4 font-display text-[clamp(2rem,3.4vw,3.2rem)] font-extrabold text-white">{nansen.title}</h3>
+        <p className="mt-4 text-white/80">{nansen.origin}</p>
+        <p className={`${kicker} mt-8 text-mint`}>{nansen.experienceKicker}</p>
+        <h3 className="mt-4 font-display text-[clamp(1.7rem,2.6vw,2.4rem)] font-extrabold text-white">{nansen.headline}</h3>
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/10 p-6">
           <strong className="block text-[2.5rem] leading-none font-black text-mint">{nansen.stat}</strong>
           <span className="mt-2 block font-extrabold text-white/75">{nansen.statLabel}</span>
@@ -35,6 +30,9 @@ export function NansenBlock() {
             )}
           </p>
         ))}
+        <a href={externalLinks.nansen} target="_blank" rel="noopener noreferrer" className={`${btnMint} mt-8 self-start`}>
+          {nansen.link}
+        </a>
       </div>
     </div>
   );

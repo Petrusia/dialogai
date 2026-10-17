@@ -6,15 +6,13 @@ type ProcessStepProps = {
 };
 
 export function ProcessStep({ number, title, text, variant }: ProcessStepProps) {
-  const dark = variant === "dark";
+  const marked = variant === "dark";
 
   return (
-    <article className={`grid grid-cols-1 items-center gap-5 rounded-xl border border-border-sand/60 p-5 shadow-card sm2:grid-cols-[120px_1fr] ${dark ? "bg-ink" : "bg-cream"}`}>
-      <b className={`grid size-20 place-items-center rounded-[1.4rem] text-2xl font-black ${dark ? "bg-mint text-ink" : "bg-gradient-to-br from-ink to-forest text-mint"}`}>{number}</b>
-      <div>
-        <h3 className={dark ? "text-white" : "text-ink"}>{title}</h3>
-        <p className={`mt-2 ${dark ? "text-white/75" : "text-muted"}`}>{text}</p>
-      </div>
-    </article>
+    <li className={`grid grid-cols-[3.5rem_1fr] gap-x-4 gap-y-2 border-t py-7 sm2:grid-cols-[5.5rem_minmax(0,0.85fr)_minmax(0,1.15fr)] sm2:items-start sm2:gap-x-8 ${marked ? "border-forest" : "border-line"}`}>
+      <span className={`font-display text-[2rem] leading-none font-extrabold tracking-[-0.04em] sm2:text-[2.6rem] ${marked ? "text-forest" : "text-ink"}`}>{number}</span>
+      <h3 className="self-center text-[1.25rem] sm2:self-start">{title}</h3>
+      <p className="col-start-2 text-muted sm2:col-start-3">{text}</p>
+    </li>
   );
 }

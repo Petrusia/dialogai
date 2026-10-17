@@ -16,7 +16,7 @@ export function MethodSection() {
             </p>
           ))}
         </div>
-        <div className="grid gap-5 sm2:grid-cols-2 lg2:grid-cols-3">
+        <div className="grid gap-10 sm2:grid-cols-2 lg2:grid-cols-3 lg2:gap-12">
           {method.principles.map((principle) => (
             <MethodPrinciple key={principle.number} {...principle} />
           ))}

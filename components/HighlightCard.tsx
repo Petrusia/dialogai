@@ -8,12 +8,14 @@ type HighlightCardProps = {
 
 export function HighlightCard({ src, title, text }: HighlightCardProps) {
   return (
-    <article className="group rounded-card-lg border border-border-sand/55 bg-cream p-6 shadow-card">
-      <div className="relative size-16 overflow-hidden rounded-full border-4 border-mint/95 bg-mint shadow-hover sm2:size-[72px] sm2:border-[5px]" aria-hidden="true">
-        <Image src={src} alt="" fill sizes="72px" className="object-cover transition-transform duration-650 ease-soft group-hover:scale-110" />
+    <article className="overflow-hidden rounded-card-lg border border-line bg-cream">
+      <div className="relative aspect-[16/10]">
+        <Image src={src} alt="" fill sizes="(min-width: 1025px) 30vw, (min-width: 701px) 50vw, 100vw" className="object-cover" />
       </div>
-      <h2 className="mt-5 text-h3">{title}</h2>
-      <p className="mt-4 text-muted">{text}</p>
+      <div className="p-6">
+        <h2 className="text-h3">{title}</h2>
+        <p className="mt-3 text-muted">{text}</p>
+      </div>
     </article>
   );
 }

@@ -11,12 +11,11 @@ export function SpaceCard({ src, title, text, variant }: SpaceCardProps) {
   const dark = variant === "dark";
 
   return (
-    <article className={`group grid grid-cols-[88px_1fr] items-center gap-4 overflow-hidden rounded-xl border border-border-sand/60 p-5 shadow-card sm2:min-h-[190px] sm2:grid-cols-[118px_1fr] sm2:gap-5 lg2:grid-cols-[132px_1fr] ${dark ? "bg-ink text-white" : "bg-white"}`}>
-      <div className={`relative size-[88px] overflow-hidden rounded-full border-[5px] transition-transform duration-450 ease-soft group-hover:scale-[1.015] sm2:size-[118px] lg2:size-[132px] lg2:border-[6px] ${dark ? "border-white/85 shadow-dark" : "border-mint/95 shadow-[0_20px_44px_rgba(7,63,56,0.15)]"}`}>
-        <Image src={src} alt="" fill sizes="132px" className="object-cover" />
-        <span className="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.45)]" />
+    <article className={`flex h-full flex-col overflow-hidden rounded-card-lg border ${dark ? "border-ink bg-ink" : "border-line bg-white"}`}>
+      <div className="relative aspect-[3/2]">
+        <Image src={src} alt="" fill sizes="(min-width: 1025px) 30vw, (min-width: 701px) 50vw, 100vw" className="object-cover" />
       </div>
-      <div>
+      <div className="flex flex-1 flex-col p-5">
         <h3 className={dark ? "text-white" : "text-ink"}>{title}</h3>
         <p className={`mt-2 ${dark ? "text-white/80" : "text-muted"}`}>{text}</p>
       </div>

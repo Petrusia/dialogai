@@ -1,6 +1,6 @@
 # 002 — Raise text contrast to WCAG AA
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 045c291
 - **Severity**: MEDIUM
 - **Category**: Accessibility
