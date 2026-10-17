@@ -1,4 +1,6 @@
-import { REQUEST_DIALOG_MAILTO } from "@/lib/links";
+"use client";
+
+import { useInquiryDialog } from "@/components/InquiryDialog";
 import { btnDark } from "@/lib/ui";
 
 type RequestDialogButtonProps = {
@@ -8,11 +10,12 @@ type RequestDialogButtonProps = {
 };
 
 export function RequestDialogButton({ variant, children, className = "" }: RequestDialogButtonProps) {
-  const variantClass = variant === "nav" ? "hidden lg2:inline-flex" : "bg-ink";
+  const openInquiry = useInquiryDialog();
+  const variantClass = variant === "nav" ? "hidden lg2:inline-flex" : "";
 
   return (
-    <a href={REQUEST_DIALOG_MAILTO} className={`${btnDark} ${variantClass} ${className}`}>
+    <button type="button" className={`${btnDark} ${variantClass} ${className}`} onClick={(event) => openInquiry(event.currentTarget)}>
       {children}
-    </a>
+    </button>
   );
 }

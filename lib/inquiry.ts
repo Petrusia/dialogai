@@ -1,60 +1,110 @@
-export const inquiryFields = ["name", "email", "city", "organization", "topic", "message"] as const;
+export const audiences = ["person", "school", "community", "organization"] as const;
 
+export type Audience = (typeof audiences)[number];
+
+export const inquiryFields = ["name", "email", "audience", "organization", "message"] as const;
 export type InquiryField = (typeof inquiryFields)[number];
 
-export type Inquiry = Record<InquiryField, string>;
+export type Inquiry = {
+  name: string;
+  email: string;
+  audience: Audience;
+  organization: string;
+  message: string;
+};
 
 export type InquiryErrors = Partial<Record<InquiryField, string>>;
 
-const limits: Record<InquiryField, number> = {
+const limits = {
   name: 120,
-  email: 200,
-  city: 160,
+  email: 254,
   organization: 200,
-  topic: 200,
-  message: 4000,
-};
+  message: 5000,
+} as const;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function validateInquiry(
-  input: unknown,
-): { ok: true; value: Inquiry } | { ok: false; errors: InquiryErrors } {
+function textOf(data: Record<string, unknown>, key: string) {
+  const raw = data[key];
+  return typeof raw === "string" ? raw.trim() : "";
+}
+
+function isAudience(value: string): value is Audience {
+  return (audiences as readonly string[]).includes(value);
+}
+
+export function validateInquiry(input: unknown): { ok: true; value: Inquiry } | { ok: false; errors: InquiryErrors } {
   if (!input || typeof input !== "object") {
     return { ok: false, errors: { name: "Užpildykite formą." } };
   }
 
   const data = input as Record<string, unknown>;
   const errors: InquiryErrors = {};
-  const value = {} as Inquiry;
+  const name = textOf(data, "name");
+  const email = textOf(data, "email");
+  const audience = textOf(data, "audience");
+  const organization = textOf(data, "organization");
+  const message = textOf(data, "message");
 
-  for (const field of inquiryFields) {
-    const raw = data[field];
-    const text = typeof raw === "string" ? raw.trim() : "";
+  if (!name) errors.name = "Šis laukas būtinas.";
+  else if (name.length > limits.name) errors.name = "Tekstas per ilgas.";
 
-    if (!text) {
-      errors[field] = "Šis laukas būtinas.";
-      continue;
-    }
+  if (!email) errors.email = "Šis laukas būtinas.";
+  else if (email.length > limits.email || !emailPattern.test(email)) errors.email = "Įrašykite galiojantį el. pašto adresą.";
 
-    if (text.length > limits[field]) {
-      errors[field] = "Tekstas per ilgas.";
-      continue;
-    }
+  if (!audience) errors.audience = "Pasirinkite, kas kreipiasi.";
+  else if (!isAudience(audience)) errors.audience = "Pasirinkite, kas kreipiasi.";
 
-    value[field] = text;
-  }
+  const asksAsPerson = audience === "person";
+  if (!asksAsPerson && organization.length > limits.organization) errors.organization = "Tekstas per ilgas.";
 
-  if (value.email && !emailPattern.test(value.email)) {
-    errors.email = "Įrašykite galiojantį el. pašto adresą.";
-  }
+  if (!message) errors.message = "Šis laukas būtinas.";
+  else if (message.length > limits.message) errors.message = "Tekstas per ilgas.";
 
-  if (Object.keys(errors).length > 0) return { ok: false, errors };
-  return { ok: true, value };
+  if (Object.keys(errors).length > 0 || !isAudience(audience)) return { ok: false, errors };
+
+  return {
+    ok: true,
+    value: {
+      name,
+      email,
+      audience,
+      organization: asksAsPerson ? "" : organization,
+      message,
+    },
+  };
+}
+
+export function inquiryPayload(value: Inquiry): Record<string, string> {
+  const payload: Record<string, string> = {
+    name: value.name,
+    email: value.email,
+    audience: value.audience,
+    message: value.message,
+    website: "",
+    source: "dialogai.lt",
+  };
+
+  if (value.audience !== "person" && value.organization) payload.organization = value.organization;
+  return payload;
 }
 
 export function isHoneypotFilled(input: unknown): boolean {
   if (!input || typeof input !== "object") return false;
-  const company = (input as { company?: unknown }).company;
-  return typeof company === "string" && company.trim().length > 0;
+  const website = (input as { website?: unknown }).website;
+  return typeof website === "string" && website.trim().length > 0;
+}
+
+export function upstreamFieldErrors(body: unknown): InquiryErrors {
+  if (!body || typeof body !== "object" || !("errors" in body)) return {};
+  const errors = (body as { errors?: unknown }).errors;
+  if (!errors || typeof errors !== "object") return {};
+
+  const mapped: InquiryErrors = {};
+  for (const [key, value] of Object.entries(errors)) {
+    if (!(inquiryFields as readonly string[]).includes(key)) continue;
+    const text = Array.isArray(value) ? value.find((item) => typeof item === "string") : value;
+    if (typeof text === "string" && text.trim()) mapped[key as InquiryField] = text;
+  }
+  return mapped;
 }

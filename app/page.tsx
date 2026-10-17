@@ -9,11 +9,7 @@ import { SpacesSection } from "@/components/SpacesSection";
 import { SupportSection } from "@/components/SupportSection";
 import { WhySection } from "@/components/WhySection";
 
-type HomePageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export default function HomePage({ searchParams }: HomePageProps) {
+export default function HomePage() {
   return (
     <main id="top">
       <Hero />
@@ -24,7 +20,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
       <ProcessSection />
       <FaqSection />
       <ArticlesPreview />
-      <CtaSection searchParams={searchParams} />
+      <CtaSection />
       <SupportSection />
     </main>
   );

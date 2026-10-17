@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { InquiryDialogProvider } from "@/components/InquiryDialog";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { organizationJsonLd, site } from "@/lib/site";
@@ -69,10 +70,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="lt" className={`${inter.variable} ${interExt.variable} ${fraunces.variable} ${frauncesExt.variable} h-full antialiased`}>
       <body className="min-h-full">
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <InquiryDialogProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        </InquiryDialogProvider>
       </body>
     </html>
   );

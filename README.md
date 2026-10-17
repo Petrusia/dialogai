@@ -27,8 +27,8 @@ npm start
 
 ## Užklausos
 
-Kontaktų forma siunčia `POST /api/uzklausa`. Serveris persiunčia JSON į `INQUIRY_API_URL`. Kol adresas nenurodytas, forma to nevaizduoja kaip sėkmės ir palieka el. paštą `info@domussolis.org`.
+Mygtukas „Paprašyti dialogo“ atidaro langą. Forma siunčia `POST /api/uzklausa`. Serveris persiunčia JSON į `https://domussolis.org/api/v1/inquiries` (arba `INQUIRY_API_URL`) su antrašte `Authorization: Bearer` iš `INQUIRY_API_TOKEN`. Raktas lieka serveryje ir į naršyklės kodą nepatenka.
 
-Persiunčiami laukai: `name`, `email`, `city`, `organization`, `topic`, `message`, `sentAt`.
+Laukai: `name`, `email`, `audience` (`person`, `school`, `community`, `organization`), nebūtina `organization` (tik kai kreipiasi ne asmuo), `message`. Temos lauko nėra. Pridedami `source` (`dialogai.lt`) ir tuščias `website`. Sėkmė yra atsakymas 201. Lauko klaidos ateina kaip 422. Kol rakto nėra, langas to nevadina sėkme ir palieka el. paštą `info@domussolis.org`.
 
-Kintamųjų pavyzdys yra `.env.example`. Hostingerio skydelyje juos reikia nurodyti prieš diegimą.
+Kintamųjų pavyzdys yra `.env.example`. Hostingerio skydelyje juos reikia nurodyti prieš diegimą. Raktas nėra `NEXT_PUBLIC_`.
