@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
+import { formatArticleDate } from "@/lib/format";
 import { kicker } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -27,7 +28,7 @@ export default async function ArticlesPage() {
             <article key={article.slug} className="rounded-card-lg border border-border-sand/55 bg-white p-6 shadow-card">
               {article.publishedAt ? (
                 <time dateTime={article.publishedAt} className="text-kicker font-black tracking-[0.16em] text-forest uppercase">
-                  {formatDate(article.publishedAt)}
+                  {formatArticleDate(article.publishedAt)}
                 </time>
               ) : null}
               <h2 className="mt-3 font-display text-[2rem] leading-tight font-extrabold">
@@ -40,10 +41,4 @@ export default async function ArticlesPage() {
       )}
     </main>
   );
-}
-
-function formatDate(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.valueOf())) return value;
-  return new Intl.DateTimeFormat("lt-LT", { dateStyle: "long" }).format(date);
 }

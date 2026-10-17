@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useId, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode, type RefObject } from "react";
+import { createContext, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode, type RefObject } from "react";
 import { audiences, type Audience, type InquiryErrors, type InquiryField } from "@/lib/inquiry";
 import { site } from "@/lib/site";
 import { btnDark } from "@/lib/ui";
@@ -46,26 +46,39 @@ export function InquiryDialogProvider({ children }: { children: ReactNode }) {
 function InquiryModal({ onClose, triggerRef }: { onClose: () => void; triggerRef: RefObject<HTMLElement | null> }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  const onCloseEvent = useEffectEvent(onClose);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
     const handleClose = () => {
-      onClose();
+      onCloseEvent();
       const trigger = triggerRef.current;
       queueMicrotask(() => trigger?.focus());
     };
 
+    const handleBackdropClick = (event: MouseEvent) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      const inside =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+      if (!inside) dialog.close();
+    };
+
     dialog.addEventListener("close", handleClose);
-    dialog.showModal();
+    if (!("closedBy" in HTMLDialogElement.prototype)) dialog.addEventListener("click", handleBackdropClick);
+    if (!dialog.open) dialog.showModal();
     dialog.querySelector<HTMLElement>("#uzklausa-name")?.focus();
 
     return () => {
       dialog.removeEventListener("close", handleClose);
-      if (dialog.open) dialog.close();
+      dialog.removeEventListener("click", handleBackdropClick);
     };
-  }, [onClose, triggerRef]);
+  }, [triggerRef]);
 
   function requestClose() {
     dialogRef.current?.close();
@@ -75,10 +88,8 @@ function InquiryModal({ onClose, triggerRef }: { onClose: () => void; triggerRef
     <dialog
       ref={dialogRef}
       aria-labelledby={titleId}
+      closedby="any"
       className="m-auto max-h-[calc(100%-2rem)] w-[min(100%-1.5rem,36rem)] overflow-y-auto rounded-xl border-0 bg-white p-0 text-ink shadow-soft backdrop:bg-ink-deep/70"
-      onClick={(event) => {
-        if (event.target === event.currentTarget) requestClose();
-      }}
     >
       <div className="p-6">
         <div className="mb-5 flex items-start justify-between gap-4">
@@ -106,9 +117,12 @@ function InquiryForm() {
     () => false,
   );
   const showOrganization = audience === "school" || audience === "community" || audience === "organization";
+  const sendingRef = useRef(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sendingRef.current) return;
+    sendingRef.current = true;
     setStatus("sending");
     setErrors({});
     setMessage("");
@@ -122,15 +136,17 @@ function InquiryForm() {
         headers: { "content-type": "application/json", accept: "application/json" },
         body: JSON.stringify(payload),
       });
-      const data = (await response.json()) as { ok?: boolean; errors?: InquiryErrors; message?: string };
 
-      if (data.errors) {
-        setErrors(data.errors);
+      if (!response.ok) {
+        const data = (await response.json()) as { errors?: InquiryErrors; message?: string };
+        if (data.errors) setErrors(data.errors);
         setStatus("error");
+        setMessage(data.errors ? "" : (data.message ?? "Užklausos išsiųsti nepavyko."));
         return;
       }
 
-      if (!response.ok || !data.ok) {
+      const data = (await response.json()) as { ok?: boolean; message?: string };
+      if (!data.ok) {
         setStatus("error");
         setMessage(data.message ?? "Užklausos išsiųsti nepavyko.");
         return;
@@ -140,6 +156,8 @@ function InquiryForm() {
     } catch {
       setStatus("error");
       setMessage("Užklausos išsiųsti nepavyko. Patikrinkite ryšį ir pabandykite dar kartą.");
+    } finally {
+      sendingRef.current = false;
     }
   }
 
