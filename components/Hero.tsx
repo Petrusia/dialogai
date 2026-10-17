@@ -5,32 +5,33 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section className="relative isolate flex items-center overflow-hidden pt-[7.5rem] sm2:pt-hero-top lg2:min-h-svh">
-      <Image
-        src="/assets/hero.webp"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center lg2:object-right"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,247,239,0.98)_0%,rgba(251,247,239,0.93)_56%,rgba(251,247,239,0.78)_100%)] sm2:bg-[linear-gradient(180deg,rgba(251,247,239,0.98)_0%,rgba(251,247,239,0.92)_52%,rgba(251,247,239,0.72)_100%)] lg2:bg-[linear-gradient(90deg,rgba(251,247,239,0.97)_0%,rgba(251,247,239,0.91)_38%,rgba(251,247,239,0.62)_68%,rgba(251,247,239,0.36)_100%),linear-gradient(180deg,rgba(7,63,56,0.04),rgba(7,63,56,0.2))]"
-      />
-      <div className="container-site relative z-[1] pt-8 pb-16 sm2:pb-24">
-        <div className="max-w-prose-hero animate-rise motion-reduce:animate-none">
-          <h1 className="max-w-prose-hero text-[clamp(2.35rem,11vw,3.55rem)] leading-[1.04] sm2:text-display">
-            {hero.title} <span className="block text-forest">{hero.accent}</span>
-          </h1>
-          <p className="mt-7 max-w-[42rem] text-xl leading-8 text-slate-soft lg2:max-w-[680px]">{hero.lead}</p>
-          <div className="mt-9">
-            <RequestDialogButton variant="dark" className="min-w-[260px]">
-              {hero.cta}
-            </RequestDialogButton>
+    <section className="pt-[7.5rem] sm2:pt-hero-top">
+      <div className="container-site grid gap-8 pb-16 sm2:gap-10 sm2:pb-24 lg2:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg2:items-center lg2:gap-16">
+        <div className="contents lg2:block">
+          <div className="order-1 max-w-prose-hero">
+            <h1 className="text-[clamp(2.5rem,7vw,4.6rem)] leading-[1.02]">
+              {hero.title}
+              <span className="mt-2 block text-forest">{hero.accent}</span>
+            </h1>
+            <p className="mt-6 max-w-[38rem] text-lg leading-8 text-slate-soft sm2:text-xl">{hero.lead}</p>
+            <div className="mt-8">
+              <RequestDialogButton variant="dark" className="w-full sm2:w-auto">
+                {hero.cta}
+              </RequestDialogButton>
+            </div>
           </div>
-          <HeroStats />
+          <HeroStats className="order-3 lg2:mt-10" />
         </div>
+        <figure className="relative order-2 aspect-[4/3] overflow-hidden rounded-2xl shadow-soft">
+          <Image
+            src="/assets/hero.webp"
+            alt="Žmonės sėdi ratu pievoje prie upės ir kalbasi."
+            fill
+            preload
+            sizes="(min-width: 1025px) 46vw, 100vw"
+            className="object-cover object-[center_42%]"
+          />
+        </figure>
       </div>
     </section>
   );

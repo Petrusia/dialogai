@@ -1,5 +1,5 @@
 import { RequestDialogButton } from "@/components/RequestDialogButton";
-import { cta } from "@/lib/content";
+import { cta, hero } from "@/lib/content";
 import { kicker } from "@/lib/ui";
 
 export function CtaSection() {
@@ -18,6 +18,14 @@ export function CtaSection() {
         <div className="rounded-xl bg-white p-6 text-ink shadow-soft">
           <h3>{cta.boxTitle}</h3>
           <p className="mt-4 text-muted">{cta.boxText}</p>
+          <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-line pt-5">
+            {hero.stats.map((stat) => (
+              <div key={stat.label} className="min-w-0">
+                <dt className="font-display text-[1.35rem] leading-none font-extrabold text-ink">{stat.value}</dt>
+                <dd className="mt-2 text-xs leading-snug font-semibold text-muted">{stat.note}</dd>
+              </div>
+            ))}
+          </dl>
           <RequestDialogButton variant="dark" className="mt-6 w-full">
             {cta.button}
           </RequestDialogButton>

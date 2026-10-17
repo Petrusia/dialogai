@@ -110,7 +110,7 @@ export const method = {
 
 export const nansen = {
   image: "/assets/nansen-photo.webp",
-  alt: "Nansen Center for Peace and Dialogue fasilitatoriai dialogo sesijoje",
+  alt: "Baltas Nansen Center for Peace and Dialogue pastatas su žaliomis langinėmis.",
   originKicker: "Metodo kilmė",
   title: "Nansen Center for Peace and Dialogue",
   origin: "Norvegijoje gimusi dialogo praktika, skirta padėti žmonėms kalbėtis ten, kur paprastas pokalbis tampa sunkus.",
