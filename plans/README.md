@@ -2,13 +2,15 @@
 
 Source commit: `045c291`. React Doctor 0.9.18 score on that commit: 70 (`Needs work`), 8 warnings, 0 errors.
 
-These plans fix confirmed findings. They do not change behavior beyond the finding. Run them in order. Plans 003 and 004 edit `components/InquiryDialog.tsx`; do 003 first.
+These plans fix confirmed findings. They do not change behavior beyond the finding. Run the remaining plans in order. Plan 004 edits `components/InquiryDialog.tsx` after the submit guard that plan 003 already applied.
+
+The React Doctor score on this branch is 100. That pass also escaped JSON-LD, hoisted the article date formatter, checked `response.ok` before reading the inquiry response, and closed the dialog with `closedby="any"`.
 
 | Plan | Status | Severity | Depends on | Summary |
 | --- | --- | --- | --- | --- |
 | [001](001-cache-only-successful-articles.md) | TODO | MEDIUM | none | Cache a successful articles response. Keep the local list outside the cache when the upstream fails. |
 | [002](002-raise-text-contrast.md) | TODO | MEDIUM | none | Move muted, clay, and Facebook colors to WCAG AA pairs. |
-| [003](003-guard-inquiry-resubmit.md) | TODO | MEDIUM | none | Block a second inquiry submit with a ref before the first await. |
+| [003](003-guard-inquiry-resubmit.md) | DONE | MEDIUM | none | Block a second inquiry submit with a ref before the first await. |
 | [004](004-associate-inquiry-field-errors.md) | TODO | MEDIUM | 003 | Point each invalid inquiry control at its error with `aria-describedby`. |
 | [005](005-choose-one-active-section.md) | TODO | MEDIUM | none | Highlight the first intersecting header section, in nav order. |
 

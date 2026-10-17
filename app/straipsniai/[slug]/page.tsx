@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { NotFoundView } from "@/components/NotFoundView";
 import { getArticle, getArticles } from "@/lib/articles";
+import { formatArticleDate } from "@/lib/format";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -38,7 +39,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </Link>
       {article.publishedAt ? (
         <time dateTime={article.publishedAt} className="mt-6 block text-kicker font-black tracking-[0.16em] text-forest uppercase">
-          {formatDate(article.publishedAt)}
+          {formatArticleDate(article.publishedAt)}
         </time>
       ) : null}
       <h1 className="mt-4 text-h2">{article.title}</h1>
@@ -49,10 +50,4 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </div>
     </main>
   );
-}
-
-function formatDate(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.valueOf())) return value;
-  return new Intl.DateTimeFormat("lt-LT", { dateStyle: "long" }).format(date);
 }

@@ -1,6 +1,6 @@
 # 003 — Guard inquiry submit against re-entry
 
-- **Status**: TODO
+- **Status**: DONE
 - **Commit**: 045c291
 - **Severity**: MEDIUM
 - **Category**: Bugs & correctness

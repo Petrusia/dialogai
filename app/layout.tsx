@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { InquiryDialogProvider } from "@/components/InquiryDialog";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { organizationJsonLd, site } from "@/lib/site";
+import { jsonForHtml, organizationJsonLd, site } from "@/lib/site";
 import "./globals.css";
 
 const inter = localFont({
@@ -74,7 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteHeader />
           {children}
           <SiteFooter />
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonForHtml(organizationJsonLd) }} />
         </InquiryDialogProvider>
       </body>
     </html>

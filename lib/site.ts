@@ -24,3 +24,7 @@ export const organizationJsonLd = {
       "Struktūruotas, nešališkai fasilituojamas pokalbis bendro intereso tema. Trukmė 90–120 min., 12–60 dalyvių.",
   },
 };
+
+export function jsonForHtml(value: unknown) {
+  return JSON.stringify(value).replaceAll("<", "\\u003c").replaceAll(">", "\\u003e").replaceAll("&", "\\u0026");
+}

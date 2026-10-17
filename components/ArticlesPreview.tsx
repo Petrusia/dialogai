@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
+import { formatArticleDate } from "@/lib/format";
 import { kicker, sectionY } from "@/lib/ui";
 
 export async function ArticlesPreview() {
@@ -23,7 +24,7 @@ export async function ArticlesPreview() {
             <article key={article.slug} className="rounded-card-lg border border-border-sand/55 bg-cream p-6 shadow-card">
               {article.publishedAt ? (
                 <time dateTime={article.publishedAt} className="text-kicker font-black tracking-[0.16em] text-forest uppercase">
-                  {formatDate(article.publishedAt)}
+                  {formatArticleDate(article.publishedAt)}
                 </time>
               ) : null}
               <h3 className="mt-4 font-display text-[2rem] leading-[1.1] font-extrabold">{article.title}</h3>
@@ -40,10 +41,4 @@ export async function ArticlesPreview() {
       </div>
     </section>
   );
-}
-
-function formatDate(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.valueOf())) return value;
-  return new Intl.DateTimeFormat("lt-LT", { dateStyle: "long" }).format(date);
 }
