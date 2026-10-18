@@ -9,17 +9,19 @@ type SpaceCardProps = {
 };
 
 export function SpaceCard({ src, title, text }: SpaceCardProps) {
+  const icon = iconFor[title];
+
   return (
-    <article className="grid gap-6 border-t border-line py-10 lg2:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.85fr)] lg2:items-center lg2:gap-x-16 lg2:py-12">
-      <div>
-        <h3 className="flex items-start gap-3 font-display text-[clamp(1.65rem,2.2vw,2.15rem)] leading-[1.12] font-extrabold tracking-[-0.03em]">
-          {iconFor[title] ? <Mark icon={iconFor[title]} size={32} className="mt-0.5" /> : null}
+    <article className="grid grid-cols-[4.5rem_1fr] items-start gap-3 border-r border-b border-line bg-white p-4 sm2:flex sm2:h-full sm2:flex-col sm2:items-stretch sm2:gap-0 sm2:p-0">
+      <div className="relative aspect-square sm2:aspect-auto sm2:h-28">
+        <Image src={src} alt="" fill sizes="(min-width: 1025px) 28vw, (min-width: 701px) 40vw, 72px" className="object-cover" />
+      </div>
+      <div className="min-w-0 sm2:flex sm2:flex-1 sm2:flex-col sm2:p-5">
+        <h3 className="flex items-center gap-2 font-display text-[1.2rem] leading-tight font-extrabold tracking-[-0.03em] sm2:text-[1.35rem]">
+          {icon ? <Mark icon={icon} size={26} /> : null}
           <span className="min-w-0">{title}</span>
         </h3>
-        <p className="mt-4 max-w-md text-lg leading-8 text-slate-soft">{text}</p>
-      </div>
-      <div className="relative aspect-[16/10]">
-        <Image src={src} alt="" fill sizes="(min-width: 1025px) 38vw, 100vw" className="object-cover" />
+        <p className="mt-1.5 text-[0.92rem] leading-6 text-slate-soft">{text}</p>
       </div>
     </article>
   );

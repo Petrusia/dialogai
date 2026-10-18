@@ -8,7 +8,7 @@ export function SpacesSection() {
   return (
     <section id="erdves" className={sectionY}>
       <div className="container-site">
-        <div className="mb-16 lg2:flex lg2:items-end lg2:justify-between lg2:gap-8">
+        <div className="mb-8 lg2:flex lg2:items-end lg2:justify-between lg2:gap-8">
           <div>
             <p className={kicker}>{spaces.kicker}</p>
             <h2 className="mt-4 flex items-start gap-4 text-h2">
@@ -18,12 +18,12 @@ export function SpacesSection() {
           </div>
           <p className="mt-4 max-w-[560px] text-lead text-slate-soft lg2:mt-0">{spaces.intro}</p>
         </div>
-        <div className="border-b border-line">
+        <div className="grid border-t border-l border-line sm2:grid-cols-2 lg2:grid-cols-3">
           {spaces.items.map((space) => (
             <SpaceCard key={space.title} src={space.src} title={space.title} text={space.text} />
           ))}
         </div>
-        <p className="mt-8 max-w-prose-hero text-[0.95rem] text-muted">{spaces.note}</p>
+        <p className="mt-6 max-w-prose-hero text-[0.95rem] text-muted">{spaces.note}</p>
       </div>
     </section>
   );
