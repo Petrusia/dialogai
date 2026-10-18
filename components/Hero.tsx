@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { HeroMorph } from "@/components/HeroMorph";
 import { HeroStats } from "@/components/HeroStats";
 import { Mark } from "@/components/Mark";
 import { RequestDialogButton } from "@/components/RequestDialogButton";
@@ -7,7 +7,7 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section className="pt-[7.5rem] sm2:pt-hero-top">
+    <section className="hero-band pt-[7.5rem] sm2:pt-hero-top">
       <div className="container-site grid gap-8 pb-16 sm2:gap-10 sm2:pb-24 lg2:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg2:items-center lg2:gap-16">
         <div className="contents lg2:block">
           <div className="order-1 max-w-prose-hero">
@@ -25,16 +25,7 @@ export function Hero() {
           </div>
           <HeroStats className="order-3 lg2:mt-8" />
         </div>
-        <figure className="relative order-2 aspect-[4/3] overflow-hidden rounded-2xl shadow-soft">
-          <Image
-            src="/assets/hero.webp"
-            alt="Žmonės sėdi ratu pievoje prie upės ir kalbasi."
-            fill
-            preload
-            sizes="(min-width: 1025px) 46vw, 100vw"
-            className="object-cover object-[center_42%]"
-          />
-        </figure>
+        <HeroMorph />
       </div>
     </section>
   );
