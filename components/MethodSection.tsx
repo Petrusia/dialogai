@@ -1,3 +1,5 @@
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
 import { MethodPrinciple } from "@/components/MethodPrinciple";
 import { NansenBlock } from "@/components/NansenBlock";
 import { method } from "@/lib/content";
@@ -9,6 +11,7 @@ export function MethodSection() {
       <div className="container-site">
         <div className="mx-auto mb-16 max-w-prose-hero text-center">
           <p className={kicker}>{method.kicker}</p>
+          <Mark icon={iconFor[method.title]} size={36} className="mx-auto mt-4" />
           <h2 className="mt-4 text-h2">{method.title}</h2>
           {method.paragraphs.map((paragraph) => (
             <p key={paragraph} className="mt-4 text-lead leading-7 text-slate-soft">

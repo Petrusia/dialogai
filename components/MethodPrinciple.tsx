@@ -1,3 +1,7 @@
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
+import { numeral } from "@/lib/ui";
+
 type MethodPrincipleProps = {
   number: string;
   title: string;
@@ -7,8 +11,11 @@ type MethodPrincipleProps = {
 export function MethodPrinciple({ number, title, text }: MethodPrincipleProps) {
   return (
     <article className="border-t border-line pt-6">
-      <p className="font-display text-[2.75rem] leading-none font-extrabold tracking-[-0.04em] text-forest">{number}</p>
-      <h3 className="mt-5 max-w-[16ch] text-h3">{title}</h3>
+      <p className={`text-[1.75rem] leading-none text-forest ${numeral}`}>{number}</p>
+      <h3 className="mt-3 flex max-w-[22ch] items-start gap-3 text-h3">
+        {iconFor[title] ? <Mark icon={iconFor[title]} size={40} className="mt-0.5" /> : null}
+        <span className="min-w-0">{title}</span>
+      </h3>
       <p className="mt-3 text-muted">{text}</p>
     </article>
   );
