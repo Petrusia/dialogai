@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Mark } from "@/components/Mark";
+import { ArrowRight } from "@/components/marks";
 import type { Article } from "@/lib/articles";
 import { formatArticleDate } from "@/lib/format";
 
@@ -21,8 +23,8 @@ export function ArticleTeaser({ article, heading }: ArticleTeaserProps) {
         </Link>
       </Title>
       <p className="mt-4 text-muted">{article.excerpt}</p>
-      <Link href={`/straipsniai/${article.slug}`} className="mt-auto inline-flex pt-8 font-black text-forest">
-        Skaityti <span aria-hidden="true">→</span>
+      <Link href={`/straipsniai/${article.slug}`} className="mt-auto inline-flex items-center gap-2 pt-8 font-black text-forest">
+        Skaityti <Mark icon={ArrowRight} size={18} />
       </Link>
     </article>
   );

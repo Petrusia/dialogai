@@ -1,6 +1,8 @@
 "use client";
 
 import { useInquiryDialog } from "@/components/InquiryDialog";
+import { Mark } from "@/components/Mark";
+import { ArrowRight } from "@/components/marks";
 import { btnDark } from "@/lib/ui";
 
 type RequestDialogButtonProps = {
@@ -16,6 +18,7 @@ export function RequestDialogButton({ variant, children, className = "" }: Reque
   return (
     <button type="button" className={`${btnDark} ${variantClass} ${className}`} onClick={(event) => openInquiry(event.currentTarget)}>
       {children}
+      {variant === "dark" ? <Mark icon={ArrowRight} size={20} className="text-current" /> : null}
     </button>
   );
 }

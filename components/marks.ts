@@ -1,0 +1,13 @@
+export { ArrowRight } from "@phosphor-icons/react/dist/ssr/ArrowRight";
+export { Armchair } from "@phosphor-icons/react/dist/ssr/Armchair";
+export { CaretDown } from "@phosphor-icons/react/dist/ssr/CaretDown";
+export { ChatsCircle } from "@phosphor-icons/react/dist/ssr/ChatsCircle";
+export { Clock } from "@phosphor-icons/react/dist/ssr/Clock";
+export { Coffee } from "@phosphor-icons/react/dist/ssr/Coffee";
+export { EnvelopeSimple } from "@phosphor-icons/react/dist/ssr/EnvelopeSimple";
+export { FacebookLogo } from "@phosphor-icons/react/dist/ssr/FacebookLogo";
+export { Heart } from "@phosphor-icons/react/dist/ssr/Heart";
+export { Scales } from "@phosphor-icons/react/dist/ssr/Scales";
+export { ShieldCheck } from "@phosphor-icons/react/dist/ssr/ShieldCheck";
+export { UserCircle } from "@phosphor-icons/react/dist/ssr/UserCircle";
+export { UsersThree } from "@phosphor-icons/react/dist/ssr/UsersThree";

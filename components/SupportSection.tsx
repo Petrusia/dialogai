@@ -1,11 +1,12 @@
+import { Coffee, Heart } from "@/components/marks";
 import { SupportLink } from "@/components/SupportLink";
 import { support } from "@/lib/content";
 import { externalLinks } from "@/lib/links";
 import { kicker, sectionY } from "@/lib/ui";
 
 const links = [
-  { href: externalLinks.buyMeACoffee, title: "Buy Me a Coffee", note: "Vienkartinė parama" },
-  { href: externalLinks.patreon, title: "Patreon", note: "Nuolatinė parama" },
+  { href: externalLinks.buyMeACoffee, title: "Buy Me a Coffee", note: "Vienkartinė parama", icon: Coffee },
+  { href: externalLinks.patreon, title: "Patreon", note: "Nuolatinė parama", icon: Heart },
 ];
 
 export function SupportSection() {

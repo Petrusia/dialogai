@@ -55,15 +55,15 @@ export function SiteHeader() {
         <button
           ref={toggleRef}
           type="button"
-          className="flex size-11 flex-col items-center justify-center rounded-[0.9rem] bg-ink focus-visible:outline-mint lg2:hidden"
+          className="flex size-11 flex-col items-center justify-center bg-ink focus-visible:outline-mint lg2:hidden"
           aria-label={open ? "Uždaryti meniu" : "Atidaryti meniu"}
           aria-expanded={open}
           aria-controls="main-nav"
           onClick={() => setOpen((value) => !value)}
         >
-          <span className="block h-0.5 w-5 rounded-full bg-white" />
-          <span className="mt-[5px] block h-0.5 w-5 rounded-full bg-white" />
-          <span className="mt-[5px] block h-0.5 w-5 rounded-full bg-white" />
+          <span className="block h-0.5 w-5 bg-white" />
+          <span className="mt-[5px] block h-0.5 w-5 bg-white" />
+          <span className="mt-[5px] block h-0.5 w-5 bg-white" />
         </button>
 
         <MobileMenu open={open} activeId={activeId} onNavigate={closeMenu} />
