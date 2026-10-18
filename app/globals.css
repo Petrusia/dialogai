@@ -156,3 +156,123 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero: nuotrauka virsta piešiniu, tada trumpas gestas ir šakų judesys. */
+.hero-rig,
+.hero-final {
+  opacity: 0;
+}
+
+.hero-branches {
+  clip-path: polygon(37.33% 0%, 100% 0%, 100% 28.94%, 86.81% 34.72%, 71.18% 32.41%, 59.03% 25.46%, 46.88% 13.89%, 37.33% 2.31%);
+  background: #f3ecdf;
+}
+
+.hero-branches-img {
+  transform-origin: 88.54% 30.09%;
+}
+
+.hero-hand-right {
+  transform-origin: 44.1% 51.4%;
+}
+
+.hero-hand-left {
+  transform-origin: 39.76% 51.4%;
+}
+
+.hero-morph.is-live .hero-photo {
+  animation: hero-fade-out 3.2s ease-in-out forwards;
+}
+
+.hero-morph.is-live .hero-rig {
+  animation: hero-fade-in 3.2s ease-in-out forwards;
+}
+
+.hero-morph.is-live .hero-branches-img {
+  animation: hero-sway 1.6s ease-in-out 3.2s 1 forwards;
+}
+
+.hero-morph.is-live .hero-hand-right {
+  animation: hero-hand-right 1.45s ease-in-out 3.2s 1 forwards;
+}
+
+.hero-morph.is-live .hero-hand-left {
+  animation: hero-hand-left 1.45s ease-in-out 3.2s 1 forwards;
+}
+
+.hero-morph.is-still .hero-final {
+  opacity: 1;
+}
+
+.hero-morph.is-still .hero-photo,
+.hero-morph.is-still .hero-rig {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-morph .hero-photo,
+  .hero-morph .hero-rig {
+    display: none;
+  }
+
+  .hero-morph .hero-final {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-sway {
+  0% {
+    transform: rotate(0deg);
+  }
+  38% {
+    transform: rotate(-2.4deg);
+  }
+  72% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hero-hand-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  46% {
+    transform: rotate(-24deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes hero-hand-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  46% {
+    transform: rotate(18deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
