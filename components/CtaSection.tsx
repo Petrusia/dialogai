@@ -10,8 +10,8 @@ export function CtaSection() {
       <div className="container-site grid items-start gap-12 lg2:grid-cols-[1.2fr_0.8fr]">
         <div>
           <p className={`${kicker} text-mint`}>{cta.kicker}</p>
-          <Mark icon={iconFor[cta.title]} size={56} className="mt-5 text-mint" />
-          <h2 className="mt-4 font-display text-[clamp(3rem,5vw,5rem)] font-extrabold text-white">{cta.title}</h2>
+          <Mark icon={iconFor[cta.title]} size={40} className="mt-4 text-mint" />
+          <h2 className="mt-3 font-display text-[clamp(1.9rem,3vw,2.85rem)] leading-[1.12] font-extrabold text-white">{cta.title}</h2>
           {cta.paragraphs.map((paragraph) => (
             <p key={paragraph} className="mt-4 text-lead text-white/80">
               {paragraph}

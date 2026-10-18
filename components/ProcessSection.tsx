@@ -11,7 +11,7 @@ export function ProcessSection() {
         <div className="mb-12 max-w-prose-hero">
           <p className={kicker}>{process.kicker}</p>
           <h2 className="mt-4 flex items-start gap-4 text-h2">
-            <Mark icon={iconFor[process.title]} size={52} className="mt-1" />
+            <Mark icon={iconFor[process.title]} size={36} className="mt-0.5" />
             <span className="min-w-0">{process.title}</span>
           </h2>
         </div>

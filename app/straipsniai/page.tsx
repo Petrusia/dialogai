@@ -18,7 +18,7 @@ export default async function ArticlesPage() {
     <main className="container-site pt-36 pb-20">
       <p className={kicker}>Straipsniai</p>
       <h1 className="mt-4 flex items-start gap-4 text-h2">
-        <Mark icon={iconFor["Tekstai apie dialogą"]} size={52} className="mt-1" />
+        <Mark icon={iconFor["Tekstai apie dialogą"]} size={36} className="mt-0.5" />
         <span className="min-w-0">Tekstai apie dialogą</span>
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-slate-soft">

@@ -20,7 +20,7 @@ export function ArticleTeaser({ article, heading }: ArticleTeaserProps) {
           {formatArticleDate(article.publishedAt)}
         </time>
       </div>
-      <Title className="mt-5 font-display text-[clamp(1.7rem,2.4vw,2.35rem)] leading-[1.12] font-extrabold tracking-[-0.03em]">
+      <Title className="mt-5 font-display text-[clamp(1.45rem,2vw,1.9rem)] leading-[1.15] font-extrabold tracking-[-0.03em]">
         <Link href={`/straipsniai/${article.slug}`} className="text-ink transition-colors duration-450 ease-soft hover:text-forest">
           {article.title}
         </Link>

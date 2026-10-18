@@ -12,7 +12,7 @@ export function SpacesSection() {
           <div>
             <p className={kicker}>{spaces.kicker}</p>
             <h2 className="mt-4 flex items-start gap-4 text-h2">
-              <Mark icon={iconFor[spaces.title]} size={52} className="mt-1" />
+              <Mark icon={iconFor[spaces.title]} size={36} className="mt-0.5" />
               <span className="min-w-0">{spaces.title}</span>
             </h2>
           </div>
