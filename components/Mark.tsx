@@ -6,6 +6,6 @@ type MarkProps = {
   className?: string;
 };
 
-export function Mark({ icon: Glyph, size = 28, className = "text-forest" }: MarkProps) {
+export function Mark({ icon: Glyph, size = 40, className = "text-forest" }: MarkProps) {
   return <Glyph aria-hidden="true" weight="light" size={size} className={`shrink-0 ${className}`} />;
 }

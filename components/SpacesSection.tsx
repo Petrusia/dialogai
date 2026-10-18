@@ -1,3 +1,5 @@
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
 import { SpaceCard } from "@/components/SpaceCard";
 import { spaces } from "@/lib/content";
 import { kicker, sectionY } from "@/lib/ui";
@@ -9,7 +11,10 @@ export function SpacesSection() {
         <div className="mb-16 lg2:flex lg2:items-end lg2:justify-between lg2:gap-8">
           <div>
             <p className={kicker}>{spaces.kicker}</p>
-            <h2 className="mt-4 text-h2">{spaces.title}</h2>
+            <h2 className="mt-4 flex items-start gap-4 text-h2">
+              <Mark icon={iconFor[spaces.title]} size={52} className="mt-1" />
+              <span className="min-w-0">{spaces.title}</span>
+            </h2>
           </div>
           <p className="mt-4 max-w-[560px] text-lead text-slate-soft lg2:mt-0">{spaces.intro}</p>
         </div>

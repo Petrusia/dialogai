@@ -1,3 +1,5 @@
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
 import { Coffee, Heart } from "@/components/marks";
 import { SupportLink } from "@/components/SupportLink";
 import { support } from "@/lib/content";
@@ -15,7 +17,10 @@ export function SupportSection() {
       <div className="container-site grid items-center gap-8 rounded-xl border border-border-sand/60 bg-white p-8 shadow-card lg2:grid-cols-[1fr_1.2fr]">
         <div>
           <p className={kicker}>{support.kicker}</p>
-          <h2 className="mt-4 text-[clamp(2.3rem,4vw,4rem)]">{support.title}</h2>
+          <h2 className="mt-4 flex items-start gap-4 text-[clamp(2.3rem,4vw,4rem)]">
+            <Mark icon={iconFor[support.title]} size={48} className="mt-1" />
+            <span className="min-w-0">{support.title}</span>
+          </h2>
           {support.paragraphs.map((paragraph) => (
             <p key={paragraph} className="mt-4 text-slate-soft">
               {paragraph}

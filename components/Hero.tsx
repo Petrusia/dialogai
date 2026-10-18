@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { HeroStats } from "@/components/HeroStats";
+import { Mark } from "@/components/Mark";
 import { RequestDialogButton } from "@/components/RequestDialogButton";
+import { ChatsCircle } from "@/components/marks";
 import { hero } from "@/lib/content";
 
 export function Hero() {
@@ -9,7 +11,8 @@ export function Hero() {
       <div className="container-site grid gap-8 pb-16 sm2:gap-10 sm2:pb-24 lg2:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg2:items-center lg2:gap-16">
         <div className="contents lg2:block">
           <div className="order-1 max-w-prose-hero">
-            <h1 className="text-[clamp(2.5rem,7vw,4.6rem)] leading-[1.02]">
+            <Mark icon={ChatsCircle} size={52} />
+            <h1 className="mt-4 text-[clamp(2.5rem,7vw,4.6rem)] leading-[1.02]">
               {hero.title}
               <span className="mt-2 block text-forest">{hero.accent}</span>
             </h1>

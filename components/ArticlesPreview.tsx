@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
+import { ArrowRight } from "@/components/marks";
 import { getArticles } from "@/lib/articles";
 import { kicker, sectionY } from "@/lib/ui";
 
@@ -13,7 +16,10 @@ export async function ArticlesPreview() {
         <div className="mb-16 lg2:flex lg2:items-end lg2:justify-between lg2:gap-8">
           <div>
             <p className={kicker}>Straipsniai</p>
-            <h2 className="mt-4 text-h2">Tekstai apie dialogą</h2>
+            <h2 className="mt-4 flex items-start gap-4 text-h2">
+              <Mark icon={iconFor["Tekstai apie dialogą"]} size={52} className="mt-1" />
+              <span className="min-w-0">Tekstai apie dialogą</span>
+            </h2>
           </div>
           <p className="mt-4 max-w-[560px] text-lead text-slate-soft lg2:mt-0">
             Trumpi tekstai apie metodą ir tai, kaip dialogas prasideda jūsų erdvėje.
@@ -24,8 +30,9 @@ export async function ArticlesPreview() {
             <ArticleTeaser key={article.slug} article={article} heading="h3" />
           ))}
         </div>
-        <Link href="/straipsniai" className="mt-8 inline-flex font-black text-ink underline decoration-mint decoration-4 underline-offset-4">
+        <Link href="/straipsniai" className="mt-8 inline-flex items-center gap-2 font-black text-ink underline decoration-mint decoration-4 underline-offset-4">
           Visi straipsniai
+          <Mark icon={ArrowRight} size={26} />
         </Link>
       </div>
     </section>

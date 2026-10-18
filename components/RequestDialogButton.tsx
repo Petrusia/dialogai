@@ -18,7 +18,7 @@ export function RequestDialogButton({ variant, children, className = "" }: Reque
   return (
     <button type="button" className={`${btnDark} ${variantClass} ${className}`} onClick={(event) => openInquiry(event.currentTarget)}>
       {children}
-      {variant === "dark" ? <Mark icon={ArrowRight} size={20} className="text-current" /> : null}
+      {variant === "dark" ? <Mark icon={ArrowRight} size={28} className="text-current" /> : null}
     </button>
   );
 }

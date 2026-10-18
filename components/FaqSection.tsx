@@ -1,17 +1,9 @@
-import type { Icon } from "@phosphor-icons/react";
 import { FaqItem } from "@/components/FaqItem";
+import { iconFor } from "@/components/iconFor";
 import { InfoCard } from "@/components/InfoCard";
 import { Mark } from "@/components/Mark";
-import { Armchair, Clock, UserCircle, UsersThree } from "@/components/marks";
 import { faq } from "@/lib/content";
 import { sectionY } from "@/lib/ui";
-
-const factIcons: Record<string, Icon> = {
-  Trukmė: Clock,
-  "Dalyvių skaičius": UsersThree,
-  Fasilitatoriai: UserCircle,
-  Erdvė: Armchair,
-};
 
 export function FaqSection() {
   return (
@@ -20,7 +12,7 @@ export function FaqSection() {
         <InfoCard kicker={faq.practical.kicker} title={faq.practical.title}>
           {faq.practical.items.map((item) => (
             <div key={item.label} className="mt-4 flex gap-3 text-muted">
-              {factIcons[item.label] ? <Mark icon={factIcons[item.label]} size={22} className="mt-0.5 text-forest" /> : null}
+              {iconFor[item.label] ? <Mark icon={iconFor[item.label]} size={36} className="mt-0.5 text-forest" /> : null}
               <p>
                 <b className="text-ink">{item.label}</b>
                 <br />

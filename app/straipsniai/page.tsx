@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ArticleTeaser } from "@/components/ArticleTeaser";
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
 import { getArticles } from "@/lib/articles";
 import { kicker } from "@/lib/ui";
 
@@ -15,7 +17,10 @@ export default async function ArticlesPage() {
   return (
     <main className="container-site pt-36 pb-20">
       <p className={kicker}>Straipsniai</p>
-      <h1 className="mt-4 text-h2">Tekstai apie dialogą</h1>
+      <h1 className="mt-4 flex items-start gap-4 text-h2">
+        <Mark icon={iconFor["Tekstai apie dialogą"]} size={52} className="mt-1" />
+        <span className="min-w-0">Tekstai apie dialogą</span>
+      </h1>
       <p className="mt-4 max-w-2xl text-lg text-slate-soft">
         Čia skelbiami tekstai apie metodą. Vėliau tą patį sąrašą galima imti iš kito šaltinio per API.
       </p>
