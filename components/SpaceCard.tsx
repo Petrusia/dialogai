@@ -12,7 +12,7 @@ export function SpaceCard({ src, title, text }: SpaceCardProps) {
   const icon = iconFor[title];
 
   return (
-    <article className="grid grid-cols-[4.5rem_1fr] items-start gap-3 border-r border-b border-line bg-white p-4 sm2:flex sm2:h-full sm2:flex-col sm2:items-stretch sm2:gap-0 sm2:p-0">
+    <article className="grid grid-cols-[4.5rem_1fr] items-start gap-3 border border-line bg-white p-4 sm2:flex sm2:h-full sm2:flex-col sm2:items-stretch sm2:gap-0 sm2:p-0">
       <div className="relative aspect-square sm2:aspect-auto sm2:h-28">
         <Image src={src} alt="" fill sizes="(min-width: 1025px) 28vw, (min-width: 701px) 40vw, 72px" className="object-cover" />
       </div>

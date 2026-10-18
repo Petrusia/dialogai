@@ -18,7 +18,7 @@ export function SpacesSection() {
           </div>
           <p className="mt-4 max-w-[560px] text-lead text-slate-soft lg2:mt-0">{spaces.intro}</p>
         </div>
-        <div className="grid border-t border-l border-line sm2:grid-cols-2 lg2:grid-cols-3">
+        <div className="grid gap-4 sm2:grid-cols-2 sm2:gap-5 lg2:grid-cols-3">
           {spaces.items.map((space) => (
             <SpaceCard key={space.title} src={space.src} title={space.title} text={space.text} />
           ))}
