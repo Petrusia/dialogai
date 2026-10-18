@@ -13,12 +13,12 @@ export function SpacesSection() {
           </div>
           <p className="mt-4 max-w-[560px] text-lead text-slate-soft lg2:mt-0">{spaces.intro}</p>
         </div>
-        <div className="grid gap-5 sm2:grid-cols-2 lg2:grid-cols-3">
+        <div className="border-b border-line">
           {spaces.items.map((space) => (
-            <SpaceCard key={space.title} {...space} />
+            <SpaceCard key={space.title} src={space.src} title={space.title} text={space.text} />
           ))}
         </div>
-        <p className="mx-auto mt-8 max-w-prose-hero text-center text-[0.95rem] text-muted">{spaces.note}</p>
+        <p className="mt-8 max-w-prose-hero text-[0.95rem] text-muted">{spaces.note}</p>
       </div>
     </section>
   );

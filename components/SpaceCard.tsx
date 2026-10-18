@@ -4,20 +4,17 @@ type SpaceCardProps = {
   src: string;
   title: string;
   text: string;
-  variant: "default" | "dark";
 };
 
-export function SpaceCard({ src, title, text, variant }: SpaceCardProps) {
-  const dark = variant === "dark";
-
+export function SpaceCard({ src, title, text }: SpaceCardProps) {
   return (
-    <article className={`flex h-full flex-col overflow-hidden rounded-card-lg border ${dark ? "border-ink bg-ink" : "border-line bg-white"}`}>
-      <div className="relative aspect-[3/2]">
-        <Image src={src} alt="" fill sizes="(min-width: 1025px) 30vw, (min-width: 701px) 50vw, 100vw" className="object-cover" />
+    <article className="grid gap-6 border-t border-line py-10 lg2:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.85fr)] lg2:items-center lg2:gap-x-16 lg2:py-12">
+      <div>
+        <h3 className="font-display text-[clamp(2.15rem,4vw,3.5rem)] leading-[1.02] font-extrabold tracking-[-0.03em]">{title}</h3>
+        <p className="mt-4 max-w-md text-lg leading-8 text-slate-soft">{text}</p>
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className={dark ? "text-white" : "text-ink"}>{title}</h3>
-        <p className={`mt-2 ${dark ? "text-white/80" : "text-muted"}`}>{text}</p>
+      <div className="relative aspect-[16/10]">
+        <Image src={src} alt="" fill sizes="(min-width: 1025px) 38vw, 100vw" className="object-cover" />
       </div>
     </article>
   );

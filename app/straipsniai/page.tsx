@@ -22,9 +22,9 @@ export default async function ArticlesPage() {
       {articles.length === 0 ? (
         <p className="mt-12 text-muted">Straipsnių kol kas nėra.</p>
       ) : (
-        <div className="mt-12 border-b border-line">
-          {articles.map((article, index) => (
-            <ArticleTeaser key={article.slug} article={article} heading="h2" featured={index === 0} />
+        <div className="mt-12 grid gap-5 md2:grid-cols-2 md2:gap-8">
+          {articles.map((article) => (
+            <ArticleTeaser key={article.slug} article={article} heading="h2" />
           ))}
         </div>
       )}

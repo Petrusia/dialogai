@@ -19,9 +19,9 @@ export async function ArticlesPreview() {
             Trumpi tekstai apie metodą ir tai, kaip dialogas prasideda jūsų erdvėje.
           </p>
         </div>
-        <div className="border-b border-line">
-          {articles.slice(0, 2).map((article, index) => (
-            <ArticleTeaser key={article.slug} article={article} heading="h3" featured={index === 0} />
+        <div className="grid gap-5 md2:grid-cols-2 md2:gap-8">
+          {articles.slice(0, 2).map((article) => (
+            <ArticleTeaser key={article.slug} article={article} heading="h3" />
           ))}
         </div>
         <Link href="/straipsniai" className="mt-8 inline-flex font-black text-ink underline decoration-mint decoration-4 underline-offset-4">
