@@ -7,7 +7,7 @@ import { hero } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section className="pt-[7.5rem] sm2:pt-hero-top">
+    <section className="hero-band pt-[7.5rem] sm2:pt-hero-top">
       <div className="container-site grid gap-8 pb-16 sm2:gap-10 sm2:pb-24 lg2:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg2:items-center lg2:gap-16">
         <div className="contents lg2:block">
           <div className="order-1 max-w-prose-hero">

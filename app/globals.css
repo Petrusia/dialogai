@@ -158,6 +158,10 @@
 }
 
 /* Hero: nuotrauka per 5 sekundes virsta ramiu piešiniu. */
+.hero-band {
+  background: #f9f1e0;
+}
+
 .hero-morph {
   opacity: 0.94;
 }
