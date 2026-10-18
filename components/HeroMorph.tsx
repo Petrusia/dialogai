@@ -53,7 +53,7 @@ export function HeroMorph() {
 
   return (
     <figure
-      className={`hero-morph relative order-2 aspect-[4/3] overflow-hidden shadow-soft${live ? " is-live" : ""}${still ? " is-still" : ""}`}
+      className={`hero-morph relative order-2 aspect-[4/3] overflow-hidden${live ? " is-live" : ""}${still ? " is-still" : ""}`}
       aria-label="Žmonės sėdi ratu pievoje prie upės ir kalbasi."
     >
       <Image

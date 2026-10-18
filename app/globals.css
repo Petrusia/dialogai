@@ -158,6 +158,10 @@
 }
 
 /* Hero: nuotrauka per 5 sekundes virsta ramiu piešiniu. */
+.hero-morph {
+  opacity: 0.94;
+}
+
 .hero-final {
   opacity: 0;
 }
