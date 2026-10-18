@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Mark } from "@/components/Mark";
 import { NotFoundView } from "@/components/NotFoundView";
+import { ArrowLeft, CalendarBlank } from "@/components/marks";
 import { getArticle, getArticles } from "@/lib/articles";
 import { formatArticleDate } from "@/lib/format";
+import { numeral } from "@/lib/ui";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -34,13 +37,17 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <main className="container-site max-w-3xl pt-36 pb-20">
-      <Link href="/straipsniai" className="text-sm font-black text-forest">
-        ← Visi straipsniai
+      <Link href="/straipsniai" className="inline-flex items-center gap-2 text-sm font-black text-forest">
+        <Mark icon={ArrowLeft} size={22} />
+        Visi straipsniai
       </Link>
       {article.publishedAt ? (
-        <time dateTime={article.publishedAt} className="mt-6 block text-kicker font-black tracking-[0.16em] text-forest uppercase">
-          {formatArticleDate(article.publishedAt)}
-        </time>
+        <div className="mt-6 flex items-center gap-2">
+          <Mark icon={CalendarBlank} size={26} />
+          <time dateTime={article.publishedAt} className={`text-kicker text-forest uppercase ${numeral}`}>
+            {formatArticleDate(article.publishedAt)}
+          </time>
+        </div>
       ) : null}
       <h1 className="mt-4 text-h2">{article.title}</h1>
       <div className="mt-8 grid gap-5 text-lg leading-8 text-slate-soft">

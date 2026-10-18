@@ -14,10 +14,10 @@ export default function HomePage() {
     <main id="top">
       <Hero />
       <Highlights />
-      <WhySection />
-      <MethodSection />
       <SpacesSection />
       <ProcessSection />
+      <MethodSection />
+      <WhySection />
       <FaqSection />
       <ArticlesPreview />
       <CtaSection />

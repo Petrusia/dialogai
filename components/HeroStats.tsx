@@ -1,4 +1,7 @@
+import { iconFor } from "@/components/iconFor";
+import { Mark } from "@/components/Mark";
 import { hero } from "@/lib/content";
+import { numeral } from "@/lib/ui";
 
 type HeroStatsProps = {
   className?: string;
@@ -6,13 +9,16 @@ type HeroStatsProps = {
 
 export function HeroStats({ className = "" }: HeroStatsProps) {
   return (
-    <dl className={`grid grid-cols-3 gap-3 border-t border-line pt-6 ${className}`}>
+    <dl className={`grid grid-cols-3 gap-x-3 border-t border-line pt-4 ${className}`}>
       {hero.stats.map((stat) => (
         <div key={stat.label} className="min-w-0">
-          <dt className="text-[0.68rem] font-black tracking-[0.16em] text-forest uppercase">{stat.label}</dt>
-          <dd className="mt-2 font-display text-[clamp(1.65rem,3vw,2.6rem)] leading-none font-extrabold tracking-[-0.04em] text-ink">
+          <dt className="flex items-center gap-1.5 text-[0.65rem] leading-none font-bold tracking-[0.12em] text-forest uppercase">
+            {iconFor[stat.label] ? <Mark icon={iconFor[stat.label]} size={18} /> : null}
+            <span className="min-w-0">{stat.label}</span>
+          </dt>
+          <dd className={`mt-1.5 text-[1.15rem] leading-none text-ink sm2:text-[1.35rem] ${numeral}`}>
             {stat.value}
-            <span className="mt-2 block text-xs leading-snug font-semibold tracking-normal text-muted normal-case">{stat.note}</span>
+            <span className="mt-1 block text-[0.72rem] leading-tight font-medium tracking-normal text-muted normal-case">{stat.note}</span>
           </dd>
         </div>
       ))}

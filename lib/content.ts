@@ -1,20 +1,20 @@
 export const headerNav = [
+  { href: "/#erdves", id: "erdves", label: "Erdvės" },
+  { href: "/#kaip", id: "kaip", label: "Procesas" },
   { href: "/#apie", id: "apie", label: "Apie" },
   { href: "/#kodel", id: "kodel", label: "Kodėl dabar?" },
-  { href: "/#kaip", id: "kaip", label: "Procesas" },
-  { href: "/#erdves", id: "erdves", label: "Erdvės" },
   { href: "/#duk", id: "duk", label: "DUK" },
   { href: "/#parama", id: "parama", label: "Parama" },
 ] as const;
 
 export const footerNav = [
+  { href: "/#erdves", label: "Erdvės" },
+  { href: "/#kaip", label: "Kaip vyksta?" },
   { href: "/#apie", label: "Apie dialogą" },
   { href: "/#kodel", label: "Kodėl dabar?" },
-  { href: "/#kaip", label: "Kaip vyksta?" },
-  { href: "/#erdves", label: "Erdvės" },
   { href: "/#duk", label: "DUK" },
-  { href: "/#parama", label: "Parama" },
   { href: "/straipsniai", label: "Straipsniai" },
+  { href: "/#parama", label: "Parama" },
 ] as const;
 
 export const sectionIds = headerNav.map((item) => item.id);
@@ -33,17 +33,14 @@ export const hero = {
 
 export const highlights = [
   {
-    src: "/assets/highlight-1.webp",
     title: "Ne debatai",
     text: "Tikslas – ne laimėti ginčą, o suprasti patirtis, poreikius ir tai, kas iš tiesų vyksta.",
   },
   {
-    src: "/assets/highlight-2.webp",
     title: "Nešališka struktūra",
     text: "Pokalbį laiko metodo apmokyti fasilitatoriai, saugantys orumą ir lygiateisį dalyvavimą.",
   },
   {
-    src: "/assets/highlight-3.webp",
     title: "Saugiai drąsu",
     text: "Erdvė, kurioje galima kalbėti jautriomis temomis be etikečių, kaltinimų ir pykčio.",
   },

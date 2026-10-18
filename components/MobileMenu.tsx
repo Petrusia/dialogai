@@ -14,8 +14,8 @@ export function MobileMenu({ open, activeId, onNavigate }: MobileMenuProps) {
       aria-label="Pagrindinė navigacija"
       className={
         open
-          ? "absolute inset-x-0 top-[calc(100%+0.6rem)] grid rounded-card bg-white p-3 shadow-card lg2:static lg2:flex lg2:items-center lg2:gap-7 lg2:bg-transparent lg2:p-0 lg2:shadow-none"
-          : "hidden lg2:flex lg2:items-center lg2:gap-7"
+          ? "absolute inset-x-0 top-[calc(100%+0.6rem)] grid rounded-card bg-white p-3 shadow-card lg2:static lg2:flex lg2:items-center lg2:gap-4 lg2:bg-transparent lg2:p-0 lg2:shadow-none min-[1280px]:gap-5"
+          : "hidden lg2:flex lg2:items-center lg2:gap-4 min-[1280px]:gap-5"
       }
     >
       {headerNav.map((item) => (

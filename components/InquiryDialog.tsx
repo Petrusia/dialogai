@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode, type RefObject } from "react";
+import { Mark } from "@/components/Mark";
+import { PaperPlaneTilt, X } from "@/components/marks";
 import { audiences, type Audience, type InquiryErrors, type InquiryField } from "@/lib/inquiry";
 import { site } from "@/lib/site";
 import { btnDark } from "@/lib/ui";
@@ -93,10 +95,12 @@ function InquiryModal({ onClose, triggerRef }: { onClose: () => void; triggerRef
     >
       <div className="p-6">
         <div className="mb-5 flex items-start justify-between gap-4">
-          <h2 id={titleId} className="font-display text-[clamp(1.8rem,3vw,2.4rem)] font-extrabold">
-            Paprašyti dialogo
+          <h2 id={titleId} className="flex items-start gap-3 font-display text-[clamp(1.5rem,2.4vw,1.9rem)] leading-[1.15] font-extrabold">
+            <Mark icon={PaperPlaneTilt} size={32} className="mt-0.5" />
+            <span className="min-w-0">Paprašyti dialogo</span>
           </h2>
-          <button type="button" className="rounded-card px-3 py-2 text-sm font-black text-forest" onClick={requestClose}>
+          <button type="button" className="inline-flex shrink-0 items-center gap-2 rounded-card px-3 py-2 text-sm font-black text-forest" onClick={requestClose}>
+            <Mark icon={X} size={22} />
             Uždaryti
           </button>
         </div>
