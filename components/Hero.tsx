@@ -23,7 +23,7 @@ export function Hero() {
               </RequestDialogButton>
             </div>
           </div>
-          <HeroStats className="order-3 lg2:mt-10" />
+          <HeroStats className="order-3 lg2:mt-8" />
         </div>
         <figure className="relative order-2 aspect-[4/3] overflow-hidden rounded-2xl shadow-soft">
           <Image

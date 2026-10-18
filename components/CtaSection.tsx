@@ -1,7 +1,8 @@
+import { HeroStats } from "@/components/HeroStats";
 import { iconFor } from "@/components/iconFor";
 import { Mark } from "@/components/Mark";
 import { RequestDialogButton } from "@/components/RequestDialogButton";
-import { cta, hero } from "@/lib/content";
+import { cta } from "@/lib/content";
 import { kicker } from "@/lib/ui";
 
 export function CtaSection() {
@@ -23,17 +24,9 @@ export function CtaSection() {
             <Mark icon={iconFor[cta.boxTitle]} size={36} className="mt-0.5" />
             <span className="min-w-0">{cta.boxTitle}</span>
           </h3>
-          <p className="mt-4 text-muted">{cta.boxText}</p>
-          <dl className="mt-6 grid grid-cols-3 gap-3 border-t border-line pt-5">
-            {hero.stats.map((stat) => (
-              <div key={stat.label} className="min-w-0">
-                <Mark icon={iconFor[stat.label]} size={28} />
-                <dt className="mt-2 font-display text-[1.35rem] leading-none font-extrabold text-ink">{stat.value}</dt>
-                <dd className="mt-2 text-xs leading-snug font-semibold text-muted">{stat.note}</dd>
-              </div>
-            ))}
-          </dl>
-          <RequestDialogButton variant="dark" className="mt-6 w-full">
+          <p className="mt-3 text-muted">{cta.boxText}</p>
+          <HeroStats className="mt-4" />
+          <RequestDialogButton variant="dark" className="mt-5 w-full">
             {cta.button}
           </RequestDialogButton>
         </div>
