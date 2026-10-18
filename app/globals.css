@@ -213,3 +213,52 @@
     opacity: 1;
   }
 }
+
+/* Nansen: priartėjus slinkikliu nuotrauka per 5 sekundes virsta piešiniu. */
+.nansen-final {
+  opacity: 0;
+}
+
+.nansen-morph.is-live .nansen-photo {
+  animation: nansen-fade-out 5s linear forwards;
+}
+
+.nansen-morph.is-live .nansen-final {
+  animation: nansen-fade-in 5s linear forwards;
+}
+
+.nansen-morph.is-still .nansen-final {
+  opacity: 1;
+}
+
+.nansen-morph.is-still .nansen-photo {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nansen-morph .nansen-photo {
+    display: none;
+  }
+
+  .nansen-morph .nansen-final {
+    opacity: 1;
+  }
+}
+
+@keyframes nansen-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes nansen-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
