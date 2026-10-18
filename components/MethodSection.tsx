@@ -5,7 +5,7 @@ import { kicker, sectionY } from "@/lib/ui";
 
 export function MethodSection() {
   return (
-    <section id="apie" className={`${sectionY} bg-white`}>
+    <section id="apie" className={sectionY}>
       <div className="container-site">
         <div className="mx-auto mb-16 max-w-prose-hero text-center">
           <p className={kicker}>{method.kicker}</p>
