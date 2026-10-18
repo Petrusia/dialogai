@@ -36,12 +36,15 @@ export function HeroMorph() {
       }, 400);
     };
 
+    const onLoad = () => begin();
+
     document.addEventListener("animationend", onFadeEnd);
     if (drawing.complete && drawing.naturalWidth > 0) begin();
-    else drawing.addEventListener("load", begin, { once: true });
+    else drawing.addEventListener("load", onLoad, { once: true });
 
     return () => {
       cancelled = true;
+      drawing.removeEventListener("load", onLoad);
       document.removeEventListener("animationend", onFadeEnd);
       window.clearTimeout(liveTimer);
       window.clearTimeout(stillTimer);
