@@ -5,6 +5,7 @@ import { EnvelopeSimple, FacebookLogo } from "@/components/marks";
 import { footer, footerNav } from "@/lib/content";
 import { externalLinks } from "@/lib/links";
 import { site } from "@/lib/site";
+import { numeral } from "@/lib/ui";
 
 export function SiteFooter() {
   return (
@@ -45,7 +46,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="container-site mt-8 border-t border-line pt-6 text-[0.9rem] text-muted">
-        <p>{footer.copyright}</p>
+        <p className={numeral}>{footer.copyright}</p>
       </div>
     </footer>
   );

@@ -3,6 +3,7 @@ import { Mark } from "@/components/Mark";
 import { ArrowRight, CalendarBlank } from "@/components/marks";
 import type { Article } from "@/lib/articles";
 import { formatArticleDate } from "@/lib/format";
+import { numeral } from "@/lib/ui";
 
 type ArticleTeaserProps = {
   article: Article;
@@ -16,7 +17,7 @@ export function ArticleTeaser({ article, heading }: ArticleTeaserProps) {
     <article className="flex h-full flex-col border border-line bg-white p-8 sm2:p-10">
       <div className="flex items-center gap-2">
         <Mark icon={CalendarBlank} size={26} />
-        <time dateTime={article.publishedAt} className="text-kicker font-black tracking-[0.16em] text-forest uppercase">
+        <time dateTime={article.publishedAt} className={`text-kicker text-forest uppercase ${numeral}`}>
           {formatArticleDate(article.publishedAt)}
         </time>
       </div>

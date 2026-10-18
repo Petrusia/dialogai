@@ -5,6 +5,7 @@ import { NotFoundView } from "@/components/NotFoundView";
 import { ArrowLeft, CalendarBlank } from "@/components/marks";
 import { getArticle, getArticles } from "@/lib/articles";
 import { formatArticleDate } from "@/lib/format";
+import { numeral } from "@/lib/ui";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -43,7 +44,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       {article.publishedAt ? (
         <div className="mt-6 flex items-center gap-2">
           <Mark icon={CalendarBlank} size={26} />
-          <time dateTime={article.publishedAt} className="text-kicker font-black tracking-[0.16em] text-forest uppercase">
+          <time dateTime={article.publishedAt} className={`text-kicker text-forest uppercase ${numeral}`}>
             {formatArticleDate(article.publishedAt)}
           </time>
         </div>

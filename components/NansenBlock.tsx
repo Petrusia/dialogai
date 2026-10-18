@@ -4,7 +4,7 @@ import { Mark } from "@/components/Mark";
 import { ArrowRight } from "@/components/marks";
 import { nansen } from "@/lib/content";
 import { externalLinks } from "@/lib/links";
-import { btnMint, kicker } from "@/lib/ui";
+import { btnMint, kicker, numeral } from "@/lib/ui";
 
 export function NansenBlock() {
   return (
@@ -22,7 +22,7 @@ export function NansenBlock() {
         <p className={`${kicker} mt-8 text-mint`}>{nansen.experienceKicker}</p>
         <h3 className="mt-4 font-display text-[clamp(1.35rem,1.8vw,1.8rem)] leading-[1.15] font-extrabold text-white">{nansen.headline}</h3>
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/10 p-6">
-          <strong className="block text-[1.75rem] leading-none font-semibold tracking-normal text-mint tabular-nums">{nansen.stat}</strong>
+          <strong className={`block text-[1.75rem] leading-none text-mint ${numeral}`}>{nansen.stat}</strong>
           <span className="mt-2 block font-extrabold text-white/75">{nansen.statLabel}</span>
         </div>
         {nansen.paragraphs.map((paragraph, index) => (

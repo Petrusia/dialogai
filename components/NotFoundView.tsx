@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Mark } from "@/components/Mark";
 import { ArrowRight, Question } from "@/components/marks";
-import { btnDark } from "@/lib/ui";
+import { btnDark, numeral } from "@/lib/ui";
 
 export function NotFoundView() {
   return (
     <main className="container-site pt-40 pb-24">
       <Mark icon={Question} size={40} />
-      <p className="mt-4 text-kicker font-black tracking-[0.2em] text-forest uppercase">404</p>
+      <p className={`mt-4 text-kicker text-forest uppercase ${numeral}`}>404</p>
       <h1 className="mt-4 text-h2">Tokio puslapio nėra</h1>
       <p className="mt-4 max-w-xl text-lg text-slate-soft">Adresas neegzistuoja arba straipsnis jau perkeltas.</p>
       <Link href="/" className={`${btnDark} mt-8`}>

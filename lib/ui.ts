@@ -1,5 +1,7 @@
 export const kicker = "text-kicker font-black tracking-[0.2em] text-forest uppercase";
 
+export const numeral = "font-sans font-medium tabular-nums tracking-normal";
+
 export const sectionY = "py-16 sm2:py-section";
 
 export const card = "rounded-card-lg border border-border-sand/55 bg-cream p-6 shadow-card";
