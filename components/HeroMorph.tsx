@@ -23,26 +23,26 @@ export function HeroMorph() {
     const drawing = new window.Image();
     drawing.src = sketch;
 
-    const onGestureEnd = (event: AnimationEvent) => {
-      if (event.animationName !== "hero-sway") return;
+    const onFadeEnd = (event: AnimationEvent) => {
+      if (event.animationName !== "hero-fade-in") return;
       stillTimer = window.setTimeout(() => {
         if (!cancelled) setPhase("still");
-      }, 220);
+      }, 40);
     };
 
     const begin = () => {
       liveTimer = window.setTimeout(() => {
         if (!cancelled) setPhase("live");
-      }, 700);
+      }, 400);
     };
 
-    document.addEventListener("animationend", onGestureEnd);
+    document.addEventListener("animationend", onFadeEnd);
     if (drawing.complete && drawing.naturalWidth > 0) begin();
     else drawing.addEventListener("load", begin, { once: true });
 
     return () => {
       cancelled = true;
-      document.removeEventListener("animationend", onGestureEnd);
+      document.removeEventListener("animationend", onFadeEnd);
       window.clearTimeout(liveTimer);
       window.clearTimeout(stillTimer);
     };
@@ -64,14 +64,6 @@ export function HeroMorph() {
         sizes="(min-width: 1025px) 46vw, 100vw"
         className="hero-photo object-cover object-[center_42%]"
       />
-      <div className="hero-rig absolute inset-0" aria-hidden>
-        <Image src="/assets/hero-sketch-base.webp" alt="" fill sizes="(min-width: 1025px) 46vw, 100vw" className="object-cover" />
-        <div className="hero-branches absolute inset-0">
-          <Image src={sketch} alt="" fill sizes="(min-width: 1025px) 46vw, 100vw" className="hero-branches-img object-cover" />
-        </div>
-        <Image src="/assets/hero-hand-right.webp" alt="" fill unoptimized className="hero-hand hero-hand-right object-cover" />
-        <Image src="/assets/hero-hand-left.webp" alt="" fill unoptimized className="hero-hand hero-hand-left object-cover" />
-      </div>
       <Image src={sketch} alt="" fill sizes="(min-width: 1025px) 46vw, 100vw" className="hero-final object-cover" />
     </figure>
   );
