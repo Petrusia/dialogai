@@ -156,3 +156,109 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero: nuotrauka per 5 sekundes virsta ramiu piešiniu. */
+.hero-band {
+  background: #f9f1e0;
+}
+
+.hero-morph {
+  opacity: 0.94;
+}
+
+.hero-final {
+  opacity: 0;
+}
+
+.hero-morph.is-live .hero-photo {
+  animation: hero-fade-out 5s linear forwards;
+}
+
+.hero-morph.is-live .hero-final {
+  animation: hero-fade-in 5s linear forwards;
+}
+
+.hero-morph.is-still .hero-final {
+  opacity: 1;
+}
+
+.hero-morph.is-still .hero-photo {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-morph .hero-photo {
+    display: none;
+  }
+
+  .hero-morph .hero-final {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Nansen: priartėjus slinkikliu nuotrauka per 5 sekundes virsta piešiniu. */
+.nansen-final {
+  opacity: 0;
+}
+
+.nansen-morph.is-live .nansen-photo {
+  animation: nansen-fade-out 5s linear forwards;
+}
+
+.nansen-morph.is-live .nansen-final {
+  animation: nansen-fade-in 5s linear forwards;
+}
+
+.nansen-morph.is-still .nansen-final {
+  opacity: 1;
+}
+
+.nansen-morph.is-still .nansen-photo {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nansen-morph .nansen-photo {
+    display: none;
+  }
+
+  .nansen-morph .nansen-final {
+    opacity: 1;
+  }
+}
+
+@keyframes nansen-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes nansen-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

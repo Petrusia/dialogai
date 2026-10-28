@@ -107,6 +107,7 @@ export const method = {
 
 export const nansen = {
   image: "/assets/nansen-photo.webp",
+  sketch: "/assets/nansen-sketch.webp",
   alt: "Baltas Nansen Center for Peace and Dialogue pastatas su žaliomis langinėmis.",
   originKicker: "Metodo kilmė",
   title: "Nansen Center for Peace and Dialogue",

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { iconFor } from "@/components/iconFor";
 import { Mark } from "@/components/Mark";
+import { NansenMorph } from "@/components/NansenMorph";
 import { ArrowRight } from "@/components/marks";
 import { nansen } from "@/lib/content";
 import { externalLinks } from "@/lib/links";
@@ -9,9 +9,7 @@ import { btnMint, kicker, numeral } from "@/lib/ui";
 export function NansenBlock() {
   return (
     <div className="mt-16 grid overflow-hidden rounded-2xl bg-gradient-to-br from-ink via-forest to-ink-deep text-white shadow-soft lg2:grid-cols-2">
-      <div className="relative min-h-72 lg2:min-h-full">
-        <Image src={nansen.image} alt={nansen.alt} fill sizes="(min-width: 1025px) 40vw, 100vw" className="object-cover" />
-      </div>
+      <NansenMorph />
       <div className="flex flex-col justify-center p-8 sm2:p-12">
         <p className={`${kicker} text-mint`}>{nansen.originKicker}</p>
         <h3 className="mt-4 flex items-start gap-3 font-display text-[clamp(1.55rem,2.2vw,2.15rem)] leading-[1.12] font-extrabold text-white">
